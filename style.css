@@ -2,6 +2,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
@@ -24,6 +25,8 @@ animation:gradientBG 12s ease infinite;
 
 }
 
+/* BACKGROUND ANIMATION */
+
 @keyframes gradientBG{
 
 0%{
@@ -40,6 +43,8 @@ background-position:0% 50%;
 
 }
 
+/* HERO SECTION */
+
 .hero{
 
 height:100vh;
@@ -50,22 +55,56 @@ justify-content:center;
 align-items:center;
 text-align:center;
 
+padding:20px;
+
 }
+
+/* MAIN TITLE */
 
 .title{
 
-font-size:70px;
+font-size:75px;
 
 animation:glow 2s infinite alternate;
 
 }
 
+/* GLOW EFFECT */
+
+@keyframes glow{
+
+from{
+
+text-shadow:
+0 0 10px white,
+0 0 20px pink;
+
+}
+
+to{
+
+text-shadow:
+0 0 20px white,
+0 0 40px hotpink,
+0 0 60px deeppink;
+
+}
+
+}
+
+/* SUBTITLE */
+
 .subtitle{
 
 margin-top:20px;
-font-size:25px;
+
+font-size:28px;
+
+animation:fadeIn 2s ease;
 
 }
+
+/* BUTTON */
 
 button{
 
@@ -87,17 +126,26 @@ cursor:pointer;
 
 transition:0.5s;
 
+font-weight:bold;
+
 }
+
+/* BUTTON HOVER */
 
 button:hover{
 
-transform:scale(1.1);
+transform:
+scale(1.1)
+rotate(2deg);
 
 box-shadow:
 0 0 20px white,
-0 0 40px pink;
+0 0 40px pink,
+0 0 60px hotpink;
 
 }
+
+/* MESSAGE SECTIONS */
 
 .message{
 
@@ -109,29 +157,81 @@ justify-content:center;
 align-items:center;
 text-align:center;
 
-padding:40px;
+padding:50px;
 
-background:rgba(0,0,0,0.4);
+background:rgba(0,0,0,0.3);
+
+backdrop-filter:blur(10px);
 
 }
+
+/* HEADING */
+
+.message h2{
+
+font-size:55px;
+
+margin-bottom:25px;
+
+animation:glow 2s infinite alternate;
+
+}
+
+/* PARAGRAPH */
+
+.message p{
+
+max-width:850px;
+
+line-height:2;
+
+font-size:24px;
+
+margin-top:20px;
+
+}
+
+/* PHOTOS */
 
 .photo{
 
-width:250px;
+width:280px;
 
-border-radius:20px;
+border-radius:25px;
 
-margin-bottom:30px;
+margin:25px;
 
-box-shadow:0 0 30px pink;
+transition:0.5s;
+
+box-shadow:
+0 0 20px pink,
+0 0 40px hotpink;
 
 }
+
+/* PHOTO HOVER */
+
+.photo:hover{
+
+transform:
+scale(1.08)
+rotate(2deg);
+
+box-shadow:
+0 0 30px white,
+0 0 60px pink;
+
+}
+
+/* HIDDEN SECTION */
 
 .hidden{
 
 display:none;
 
 }
+
+/* FLOATING HEARTS */
 
 .hearts span{
 
@@ -143,38 +243,149 @@ font-size:40px;
 
 animation:float 10s linear infinite;
 
+opacity:0.8;
+
 }
+
+/* HEART POSITIONS */
+
+.hearts span:nth-child(1){
+
+left:10%;
+animation-duration:8s;
+
+}
+
+.hearts span:nth-child(2){
+
+left:30%;
+animation-duration:12s;
+
+}
+
+.hearts span:nth-child(3){
+
+left:50%;
+animation-duration:10s;
+
+}
+
+.hearts span:nth-child(4){
+
+left:70%;
+animation-duration:14s;
+
+}
+
+.hearts span:nth-child(5){
+
+left:90%;
+animation-duration:9s;
+
+}
+
+/* FLOAT ANIMATION */
 
 @keyframes float{
 
 0%{
-transform:translateY(0);
+
+transform:
+translateY(0)
+rotate(0deg);
+
 opacity:1;
+
 }
 
 100%{
-transform:translateY(-120vh);
+
+transform:
+translateY(-120vh)
+rotate(360deg);
+
 opacity:0;
-}
 
 }
 
-@keyframes glow{
+}
+
+/* FADE EFFECT */
+
+@keyframes fadeIn{
 
 from{
 
-text-shadow:
-0 0 10px white,
-0 0 20px pink;
+opacity:0;
+transform:translateY(30px);
 
 }
 
 to{
 
-text-shadow:
-0 0 20px white,
-0 0 40px hotpink,
-0 0 60px deeppink;
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+/* AUDIO PLAYER */
+
+audio{
+
+position:fixed;
+
+bottom:20px;
+right:20px;
+
+border-radius:50px;
+
+opacity:0.8;
+
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width:768px){
+
+.title{
+
+font-size:45px;
+
+}
+
+.subtitle{
+
+font-size:22px;
+
+}
+
+.message h2{
+
+font-size:38px;
+
+}
+
+.message p{
+
+font-size:18px;
+
+line-height:1.8;
+
+}
+
+.photo{
+
+width:220px;
+
+}
+
+button{
+
+font-size:18px;
+
+padding:12px 25px;
 
 }
 
