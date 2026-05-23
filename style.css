@@ -1,0 +1,181 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+overflow-x:hidden;
+color:white;
+
+background:linear-gradient(
+-45deg,
+#ff0080,
+#7928ca,
+#2afadf,
+#ff4d6d
+);
+
+background-size:400% 400%;
+
+animation:gradientBG 12s ease infinite;
+
+}
+
+@keyframes gradientBG{
+
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
+
+.hero{
+
+height:100vh;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+
+}
+
+.title{
+
+font-size:70px;
+
+animation:glow 2s infinite alternate;
+
+}
+
+.subtitle{
+
+margin-top:20px;
+font-size:25px;
+
+}
+
+button{
+
+margin-top:40px;
+
+padding:15px 35px;
+
+font-size:20px;
+
+border:none;
+
+border-radius:50px;
+
+background:white;
+
+color:#ff0080;
+
+cursor:pointer;
+
+transition:0.5s;
+
+}
+
+button:hover{
+
+transform:scale(1.1);
+
+box-shadow:
+0 0 20px white,
+0 0 40px pink;
+
+}
+
+.message{
+
+min-height:100vh;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+
+padding:40px;
+
+background:rgba(0,0,0,0.4);
+
+}
+
+.photo{
+
+width:250px;
+
+border-radius:20px;
+
+margin-bottom:30px;
+
+box-shadow:0 0 30px pink;
+
+}
+
+.hidden{
+
+display:none;
+
+}
+
+.hearts span{
+
+position:fixed;
+
+bottom:-100px;
+
+font-size:40px;
+
+animation:float 10s linear infinite;
+
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
+
+}
+
+@keyframes glow{
+
+from{
+
+text-shadow:
+0 0 10px white,
+0 0 20px pink;
+
+}
+
+to{
+
+text-shadow:
+0 0 20px white,
+0 0 40px hotpink,
+0 0 60px deeppink;
+
+}
+
+}
