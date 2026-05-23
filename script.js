@@ -13,7 +13,7 @@ behavior:'smooth'
 }
 
 const text =
-"I Love You so much mmy love ❤️";
+"I Love You so much Jaan  ❤️";
 
 let i = 0;
 
