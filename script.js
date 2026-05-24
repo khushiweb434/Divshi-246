@@ -1,22 +1,22 @@
+
+/* ================= SHOW SECOND PAGE ================= */
 function showSurprise() {
 
-    let msg = document.getElementById("message");
+    document.getElementById("message")
+        .classList.remove("hidden");
 
-    if (msg) {
-        msg.classList.remove("hidden");
-
-        msg.scrollIntoView({
+    document.getElementById("message")
+        .scrollIntoView({
             behavior: 'smooth'
         });
-    }
 
     setTimeout(() => {
-        alert("Happiest Birthday My Jaan ❤️✨");
+        alert("💖 Happiest Birthday My Love ❤️✨");
     }, 1000);
 }
 
 
-/* ✨ TYPING TEXT */
+/* ================= TYPING EFFECT ================= */
 const text = "I Love You So Much Jaan ❤️";
 let i = 0;
 
@@ -32,21 +32,18 @@ function typing() {
     }
 }
 
+/* start typing when page loads */
 window.addEventListener("load", () => {
-    let el = document.getElementById("typing");
-
-    if (el && el.innerHTML.trim() === "") {
-        typing();
-    }
+    typing();
 });
 
 
-/* 💖 FLOATING HEARTS */
+/* ================= FLOATING HEARTS ================= */
 function createHeart() {
 
     const heart = document.createElement("div");
-
     heart.innerHTML = "💖";
+
     heart.style.position = "fixed";
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.top = "100vh";
@@ -62,32 +59,33 @@ function createHeart() {
     }, 6000);
 }
 
-setInterval(createHeart, 700);
+setInterval(createHeart, 500);
 
 
-/* 🎉 FLOAT ANIMATION */
+/* ================= ANIMATIONS ================= */
 let style = document.createElement("style");
+
 style.innerHTML = `
 @keyframes floatUp {
-    from {
+    0% {
         transform: translateY(0);
         opacity: 1;
     }
-    to {
+    100% {
         transform: translateY(-120vh);
         opacity: 0;
     }
 }
 `;
+
 document.head.appendChild(style);
 
 
-/* 💬 CONSOLE MESSAGE */
-console.log("Happy Birthday Mr. Kashyap ❤️");
+/* ================= CONSOLE MESSAGE ================= */
+console.log("💖 Happy Birthday My Love 💖");
 
 
-/* 👀 SECRET DOUBLE CLICK EASTER EGG */
+/* ================= SECRET DOUBLE CLICK ================= */
 document.addEventListener("dblclick", () => {
-    console.log("You found my hidden love 💖");
     alert("💖 You are my everything 💖");
 });
