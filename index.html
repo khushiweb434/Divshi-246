@@ -15,6 +15,13 @@ body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(120deg, #ffdde1, #ee9ca7);
     overflow-x: hidden;
+    animation: fadeIn 1.5s ease;
+}
+
+/* FADE IN */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* FLOATING HEARTS */
@@ -82,19 +89,6 @@ button:hover {
     font-size: 22px;
 }
 
-/* SHAKE */
-.shake {
-    animation: shake 0.4s;
-}
-
-@keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    50% { transform: translateX(10px); }
-    75% { transform: translateX(-10px); }
-    100% { transform: translateX(0); }
-}
-
 /* FALL */
 @keyframes fall {
     to {
@@ -108,25 +102,6 @@ button:hover {
 
 <body>
 
-<!-- PASSWORD SCREEN -->
-<div class="popup" id="passwordPopup" style="display:flex;">
-  <div class="popup-content">
-
-    <h2>🔐 Secret Lock</h2>
-    <p>Enter password to open  ❤️</p>
-
-    <input type="password" id="passwordInput" placeholder="Enter password"
-      style="padding:10px;border-radius:10px;border:1px solid #ccc;width:80%;text-align:center;">
-
-    <br><br>
-
-    <button onclick="checkPassword()">Unlock 💝</button>
-
-    <p id="errorMsg" style="color:red; display:none;">Wrong password 😢</p>
-
-  </div>
-</div>
-
 <!-- FLOATING HEARTS -->
 <div class="hearts">
 <span>❤️</span>
@@ -138,10 +113,13 @@ button:hover {
 
 <!-- MAIN PAGE -->
 <section class="hero" style="text-align:center;padding-top:80px;">
+
 <h1>Happy Birthday My Love ❤️</h1>
-<p>Happpiiieeeessssttttt Birthdayyyy Jaaannnn ✨</p>
+
+<p id="typing"></p>
 
 <button onclick="openSurprise()">Open Surprise 🎁</button>
+
 </section>
 
 <!-- SURPRISE 1 -->
@@ -174,27 +152,7 @@ button:hover {
 
 <script>
 
-/* PASSWORD */
-let correctPassword = "kashu123"; // change it
-
-function checkPassword() {
-    let input = document.getElementById("passwordInput").value;
-    let popup = document.getElementById("passwordPopup");
-
-    if (input === correctPassword) {
-        popup.style.display = "none";
-        createConfetti();
-    } else {
-        document.getElementById("errorMsg").style.display = "block";
-        popup.classList.add("shake");
-
-        setTimeout(() => {
-            popup.classList.remove("shake");
-        }, 400);
-    }
-}
-
-/* SURPRISE */
+/* 🎁 OPEN SURPRISE */
 function openSurprise() {
     document.getElementById("popup").style.display = "flex";
     createConfetti();
@@ -212,7 +170,7 @@ function closeSecond() {
     document.getElementById("popup2").style.display = "none";
 }
 
-/* CONFETTI */
+/* 💖 CONFETTI */
 function createConfetti() {
     for (let i = 0; i < 60; i++) {
         let confetti = document.createElement("div");
@@ -230,9 +188,56 @@ function createConfetti() {
     }
 }
 
-/* ADD ANIMATION */
-let style = document.createElement('style');
+/* 💌 TYPING TEXT */
+const text = "I Love You So Much Jaan ❤️";
+let i = 0;
+
+function typing() {
+    let el = document.getElementById("typing");
+
+    if (!el) return;
+
+    if (i < text.length) {
+        el.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing, 100);
+    }
+}
+
+window.addEventListener("load", () => {
+    typing();
+    createConfetti(); // 🎉 auto celebration
+});
+
+/* 💫 FLOAT HEARTS */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.innerHTML = "💖";
+    heart.style.position = "fixed";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = "100vh";
+    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+    heart.style.animation = "float 6s linear";
+    heart.style.pointerEvents = "none";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 700);
+
+/* FALL ANIMATION */
+let style = document.createElement("style");
 style.innerHTML = `
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
 @keyframes fall {
     to {
         transform: translateY(100vh);
