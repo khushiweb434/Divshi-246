@@ -7,11 +7,9 @@
 
 <title>Happy Birthday My Love ❤️</title>
 
-<link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-/* EXTRA BEAUTY ADDED */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -19,6 +17,7 @@ body {
     overflow-x: hidden;
 }
 
+/* FLOATING HEARTS */
 .hearts span {
     position: absolute;
     animation: float 6s infinite ease-in-out;
@@ -48,7 +47,7 @@ button:hover {
     background: #ff2e63;
 }
 
-/* POPUP SURPRISE */
+/* POPUP */
 .popup {
     display: none;
     position: fixed;
@@ -64,7 +63,7 @@ button:hover {
 
 .popup-content {
     background: white;
-    padding: 30px;
+    padding: 25px;
     border-radius: 20px;
     text-align: center;
     width: 80%;
@@ -82,11 +81,51 @@ button:hover {
     cursor: pointer;
     font-size: 22px;
 }
+
+/* SHAKE */
+.shake {
+    animation: shake 0.4s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
+/* FALL */
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
 </style>
 
 </head>
 
 <body>
+
+<!-- PASSWORD SCREEN -->
+<div class="popup" id="passwordPopup" style="display:flex;">
+  <div class="popup-content">
+
+    <h2>🔐 Secret Lock</h2>
+    <p>Enter password to open  ❤️</p>
+
+    <input type="password" id="passwordInput" placeholder="Enter password"
+      style="padding:10px;border-radius:10px;border:1px solid #ccc;width:80%;text-align:center;">
+
+    <br><br>
+
+    <button onclick="checkPassword()">Unlock 💝</button>
+
+    <p id="errorMsg" style="color:red; display:none;">Wrong password 😢</p>
+
+  </div>
+</div>
 
 <!-- FLOATING HEARTS -->
 <div class="hearts">
@@ -97,18 +136,15 @@ button:hover {
 <span>💝</span>
 </div>
 
-<!-- FIRST PAGE -->
-<section class="hero">
-
+<!-- MAIN PAGE -->
+<section class="hero" style="text-align:center;padding-top:80px;">
 <h1>Happy Birthday My Love ❤️</h1>
-
 <p>Happpiiieeeessssttttt Birthdayyyy Jaaannnn ✨</p>
 
 <button onclick="openSurprise()">Open Surprise 🎁</button>
-
 </section>
 
-<!-- POPUP SURPRISE -->
+<!-- SURPRISE 1 -->
 <div class="popup" id="popup">
 <div class="popup-content">
 
@@ -116,17 +152,14 @@ button:hover {
 
 <h2>🎉 Surpriseee Jaan ❤️</h2>
 
-<p>
-You are the most special person in my life 💖<br>
-I just want to say... I LOVE YOU SO MUCH ❤️
-</p>
+<p>You are the most special person in my life 💖<br>I LOVE YOU ❤️</p>
 
 <button onclick="secondSurprise()">Another Surprise 💝</button>
 
 </div>
 </div>
 
-<!-- SECOND SURPRISE -->
+<!-- SURPRISE 2 -->
 <div class="popup" id="popup2">
 <div class="popup-content">
 
@@ -134,21 +167,34 @@ I just want to say... I LOVE YOU SO MUCH ❤️
 
 <h2>💖 One More Thing...</h2>
 
-<p>
-You are my happiness,<br>
-my peace,<br>
-and my forever ❤️✨
-</p>
+<p>You are my happiness,<br>my peace,<br>my forever ❤️✨</p>
 
 </div>
 </div>
-
-<!-- AUDIO -->
-<audio autoplay loop>
-<source src="music.mp3" type="audio/mp3">
-</audio>
 
 <script>
+
+/* PASSWORD */
+let correctPassword = "kashu123"; // change it
+
+function checkPassword() {
+    let input = document.getElementById("passwordInput").value;
+    let popup = document.getElementById("passwordPopup");
+
+    if (input === correctPassword) {
+        popup.style.display = "none";
+        createConfetti();
+    } else {
+        document.getElementById("errorMsg").style.display = "block";
+        popup.classList.add("shake");
+
+        setTimeout(() => {
+            popup.classList.remove("shake");
+        }, 400);
+    }
+}
+
+/* SURPRISE */
 function openSurprise() {
     document.getElementById("popup").style.display = "flex";
     createConfetti();
@@ -166,11 +212,11 @@ function closeSecond() {
     document.getElementById("popup2").style.display = "none";
 }
 
-/* SIMPLE CONFETTI */
+/* CONFETTI */
 function createConfetti() {
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 60; i++) {
         let confetti = document.createElement("div");
-        confetti.innerHTML = "🎉";
+        confetti.innerHTML = "💖";
         confetti.style.position = "fixed";
         confetti.style.left = Math.random() * 100 + "vw";
         confetti.style.top = "-10px";
@@ -184,7 +230,7 @@ function createConfetti() {
     }
 }
 
-/* CONFETTI FALL */
+/* ADD ANIMATION */
 let style = document.createElement('style');
 style.innerHTML = `
 @keyframes fall {
@@ -192,8 +238,10 @@ style.innerHTML = `
         transform: translateY(100vh);
         opacity: 0;
     }
-}`;
+}
+`;
 document.head.appendChild(style);
+
 </script>
 
 </body>
